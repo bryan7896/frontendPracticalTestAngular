@@ -23,8 +23,7 @@ export class GeneralEffects {
       exhaustMap(() => {
         return this.apiService.get().pipe(
           map(response => {
-            console.log('response', response)
-            return new setCountry({ countries: response[0].number })
+            return new setCountry({ countries: response })
           })
         );
       })

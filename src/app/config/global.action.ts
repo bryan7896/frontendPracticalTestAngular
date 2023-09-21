@@ -5,6 +5,7 @@ export enum ActionTypes {
     ApiError = '[global] ApiError',
     setCountry = '[global] setCountry',
     getCountry = '[global] getCountry',
+    setFormData = '[global] setFormData',
 }
 
 
@@ -18,7 +19,7 @@ export class setCountry implements Action {
     constructor(public payload: { countries: Array<any> }) { }
 }
 export class setFormData implements Action {
-    readonly type = ActionTypes.setCountry;
+    readonly type = ActionTypes.setFormData;
     constructor(public payload: { formData: Object }) { }
 }
 
@@ -29,3 +30,5 @@ export class getCountry implements Action {
 export type actions =
     ApiError
     | setCountry
+    | setFormData
+    | getCountry

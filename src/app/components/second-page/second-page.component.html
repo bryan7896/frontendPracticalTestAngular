@@ -1,1 +1,44 @@
-<p>second-page works!</p>
+<form [formGroup]="formGroup">
+    <div class="center">
+        <h4 class="mt-15">Información a mostrar</h4>
+    </div>
+    <div class="vertical-center">
+        <mat-form-field>
+            <mat-label>Tipo de documento</mat-label>
+            <mat-select formControlName="typeId">
+                <mat-option value="Cédula de ciudadanía">Cédula de ciudadanía</mat-option>
+                <mat-option value="Pasaporte">Pasaporte</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('typeId')?.hasError('required')">
+                Este campo es obligatorio.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="vertical-center">
+        <mat-form-field>
+            <mat-label>Número de documento</mat-label>
+            <input type="number" matInput formControlName="idNumber" placeholder="Escriba su número de documento">
+            <mat-error *ngIf="formGroup.get('idNumber')?.hasError('required')">
+                Este campo es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="formGroup.get('idNumber')?.hasError('pattern')">
+                El valor debe tener entre 8 y 11 dígitos numéricos.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="vertical-center">
+        <mat-form-field>
+            <mat-label>País</mat-label>
+            <mat-select formControlName="country">
+                <mat-option *ngFor="let countrie of countries"
+                    [value]="countrie.name.common">{{countrie.name.common}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="formGroup.get('country')?.hasError('required')">
+                Este campo es obligatorio.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="vertical-center">
+        <button mat-raised-button color="primary" (click)="goBack()">Regresar</button>
+    </div>
+</form>

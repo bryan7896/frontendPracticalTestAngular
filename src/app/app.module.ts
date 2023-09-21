@@ -1,21 +1,32 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select'; 
 
-import { environment } from 'src/environments/environment';
 import { reducers, metaReducers } from './config/global.reducer';
 import { effects } from './config/global.effects';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FirstPageComponent } from './components/first-page/first-page.component';
 import { SecondPageComponent } from './components/second-page/second-page.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    FirstPageComponent,
+    SecondPageComponent,
+    FooterComponent
+  ],
   imports: [
+    MatSelectModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
@@ -23,8 +34,13 @@ import { SecondPageComponent } from './components/second-page/second-page.compon
       metaReducers
     }),
     EffectsModule.forRoot(effects),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -18,10 +18,12 @@ export const reducers: ActionReducerMap<State> = {
 
 export interface GlobalState {
   countries: Array<any>;
+  formData: Object;
 }
 
 export const inicialStateGlobal: GlobalState = {
-  countries: []
+  countries: [],
+  formData: {}
 };
 
 export function globalReducer(state: GlobalState = inicialStateGlobal, action: actions): GlobalState {
@@ -35,6 +37,11 @@ export function globalMetaReducer(reducer: ActionReducer<any>): ActionReducer<an
         return {
           ...state,
           countries: action.payload.countries
+        };
+      case ActionTypes.setFormData:
+        return {
+          ...state,
+          formData: action.payload.formData
         };
       default:
         return reducer(state, action);
