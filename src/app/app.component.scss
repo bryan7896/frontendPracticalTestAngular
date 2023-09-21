@@ -1,0 +1,12 @@
+.main-content {
+    min-height: calc(100vh - 100px);
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    padding: 10px 0;
+}

@@ -21,12 +21,12 @@ export class SecondPageComponent implements OnInit {
   countries: any;
 
   formGroup: FormGroup = new FormGroup({
-    idNumber: new FormControl("", [
+    idNumber: new FormControl({ value: '', disabled: true }, [
       Validators.required,
       Validators.pattern(/^\d{8,11}$/)
     ]),
-    typeId: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
+    typeId: new FormControl({ value: '', disabled: true }, [Validators.required]),
+    country: new FormControl({ value: '', disabled: true }, [Validators.required]),
   })
 
   ngOnInit() {
